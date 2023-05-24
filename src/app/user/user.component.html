@@ -1,0 +1,39 @@
+<form [formGroup]="userForm" (ngSubmit)="userForm.valid && onSubmit()" #myform ="ngForm">
+  <label>
+    Nom d'utilisateur:
+    <input type="text" formControlName="username" />
+  </label>
+  <div formGroupName="credentials">
+  <label>
+    Email:
+    <input type="email" formControlName="email" />
+  </label>
+  <label>
+    Mot de passe:
+    <input type="password" formControlName="password" />
+  </label>
+</div>
+  <div formGroupName="address">
+  <label >
+    Adresse:
+    <input
+      type="text"
+      formControlName="street"
+      placeholder="n° voie nom de la voie"
+    />
+    <input type="text" formControlName="postalCode" placeholder="code postal" />
+    <input type="text" formControlName="city" placeholder="ville" />
+  </label>
+</div>
+  <button type="submit" [disabled]="userForm.invalid" >
+   S'inscrire
+  </button>
+</form>
+<div *ngIf="myform.submitted">
+<div>{{ userForm.value.username }}</div>
+<div>{{ userForm.value.credentials?.email }}</div>
+<div>{{ userForm.value.credentials?.password }}</div>
+<div>{{ userForm.value.address?.street }}</div>
+<div>{{ userForm.value.address?.postalCode }}</div>
+<div>{{ userForm.value.address?.city }}</div>
+</div>

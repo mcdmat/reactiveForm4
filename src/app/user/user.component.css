@@ -1,0 +1,10 @@
+form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  /* width: 100vw; */
+  /* align-items: center; */
+}
+button {
+  width: 20%;
+}
