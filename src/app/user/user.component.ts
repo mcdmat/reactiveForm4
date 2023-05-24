@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { UserModel } from '../usermodel';
+import {  FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-user',
