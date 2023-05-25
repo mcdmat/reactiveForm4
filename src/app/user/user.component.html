@@ -2,15 +2,30 @@
   <label>
     Nom d'utilisateur:
     <input type="text" formControlName="username" />
+    <div *ngIf="userForm.controls['username'].errors && !userForm.controls['username'].pristine" class="error-msg">
+                <div [hidden]="!userForm.controls['username'].errors['required']">username is required.</div>
+                <div [hidden]="!userForm.controls['username'].invalid">username is invalid.</div>
+            </div>
   </label>
   <div formGroupName="credentials">
   <label>
     Email:
     <input type="email" formControlName="email" />
+                <div *ngIf="userForm.get('credentials.email')?.errors && !userForm.get('credentials.email')?.pristine" >
+                    <div [hidden]="!userForm.get('credentials.email')?.errors?.['required']">email requis.</div>
+                    <div [hidden]="!userForm.get('credentials.email')?.invalid">email invalide.</div>
+                    <div >{{ userForm.get('credentials.email')?.errors?.['email'].rules }}</div>
+                </div>
   </label>
   <label>
     Mot de passe:
     <input type="password" formControlName="password" />
+                <div *ngIf="userForm.get('credentials.password')?.errors && !userForm.get('credentials.password')?.pristine">
+                    <div [hidden]="!userForm.get('credentials.password')?.errors?.['required']">mot de passe requis.</div>
+                    <div [hidden]="!userForm.get('credentials.password')?.invalid">mot de passe invalide.</div>
+                    <div> {{ userForm.get('credentials.password')?.errors?.['password'].rules }}
+                    </div>
+                </div>
   </label>
 </div>
   <div formGroupName="address">
